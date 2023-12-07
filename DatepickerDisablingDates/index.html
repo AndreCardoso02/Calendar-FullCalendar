@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking App With javascript</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+
+    <style>
+        form {
+            width: 70%;
+            margin: 50% auto;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post">
+        <input type="text" id="origin" placeholder="Origin">
+        <input type="text" id="destination" placeholder="Destination">
+        <input type="text" id="depart" placeholder="Depart Date">
+        <input type="text" id="return" placeholder="Return Date">
+        <select id="seat">
+            <option>Seats</option>
+            <option value="1">Seat 1</option>
+            <option value="2">Seat 2</option>
+            <option value="3">Seat 3</option>
+            <option value="4">Seat 4</option>
+            <option value="5">Seat 5</option>
+        </select>
+        <input type="submit" value="Search" />
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var minDate = new Date();
+
+            // Configure Depart Date
+            $("#depart").datepicker({
+                showAnim: 'drop',
+                numberOfMonth: 1,
+                minDate: minDate,
+                dateFormat: 'dd/mm/yy',
+                onClose: function (selectedDate) {
+                    $('#return').datepicker("option", "minDate", selectedDate);
+                }
+            });
+
+            // Configure Return Date
+            $("#return").datepicker({
+                showAnim: 'drop',
+                numberOfMonth: 1,
+                minDate: minDate,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+    </script>
+</body>
+
+</html>
